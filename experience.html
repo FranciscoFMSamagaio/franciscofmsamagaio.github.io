@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Experience — Francisco Samagaio</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container nav-wrap">
+        <a class="brand" href="index.html">Francisco Samagaio</a>
+        <button class="menu-toggle" aria-expanded="false" aria-label="Toggle menu">
+          <span></span><span></span>
+        </button>
+        <nav class="nav" aria-label="Main navigation">
+          <a href="profile.html" data-i18n="nav_profile">Profile</a>
+          <a href="experience.html" data-i18n="nav_experience">Experience</a>
+          <a href="contact.html" data-i18n="nav_contact">Contact</a>
+          <a href="projects.html">Projects</a>
+        </nav>
+        <div class="header-actions">
+          <a class="btn btn-ghost" href="./Francisco_Samagaio.pdf" download data-i18n="btn_download">Download CV</a>
+          <div class="language-switcher" aria-label="Language switcher">
+            <button type="button" class="lang-btn active" data-lang="en" aria-pressed="true">EN</button>
+            <button type="button" class="lang-btn" data-lang="pt" aria-pressed="false">PT</button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="section container reveal" id="experience">
+        <div class="section-head">
+          <p class="eyebrow" data-i18n="experience_eyebrow">Experience</p>
+          <h2 data-i18n="experience_title">Professional Path.</h2>
+        </div>
+        <div class="timeline">
+          <article class="timeline-item">
+            <div class="timeline-dot" aria-hidden="true"></div>
+            <div class="timeline-content">
+              <h3 data-i18n-html="exp_1_title">Junior Data Analyst · <span class="natixis-text">Natixis in Portugal</span></h3>
+              <p class="meta" data-i18n="exp_1_date">December 2024 - Present</p>
+              <p data-i18n="exp_1_desc">
+                Responsible for data extraction, transformation, and reporting within the Financing Data team, 
+                working on a data lake that mirrors the Oracle-based financing system. Develop custom reports 
+                using EasyMorph for data manipulation, addressing requests from shareholders and business 
+                stakeholders. Maintain and optimize SQL queries used across ~300 reports, ensuring high 
+                performance, data accuracy, and alignment with business needs. Oversee the design, development, 
+                maintenance, and validation of 30+ database tables, ensuring data integrity throughout the 
+                pipeline. Contribute to a migration project, transitioning ~80 reports from IBM Cognos to 
+                EasyMorph and the data lake environment, rewriting complex SQL logic for compatibility and 
+                improved efficiency. Built strong expertise in data engineering, ETL design, and cross-functional
+                 collaboration within a regulated financial environment.
+              </p>
+            </div>
+          </article>
+          <article class="timeline-item">
+            <div class="timeline-dot" aria-hidden="true"></div>
+            <div class="timeline-content">
+              <h3 data-i18n-html="exp_2_title">Intern Developer · <span class="natixis-text">Natixis in Portugal</span></h3>
+              <p class="meta" data-i18n="exp_2_date">December 2023 - December 2024</p>
+              <p data-i18n="exp_2_desc">
+                Developed a project to transition an application from PowerShell to Python, 
+                contributing to architecture redesign, technology selection, and feature 
+                implementation. Created Python scripts using Pandas and NumPy to automate data 
+                extraction and transformation from around 150 files in various formats 
+                (CSV, Excel, TXT, JSON), with each script handling multiple input files. 
+                This automation enabled seamless integration with reporting pipelines. Used Git 
+                and Jenkins for version control and to support continuous integration and 
+                deployment throughout the development lifecycle. Contributed to COBOL program 
+                development and analysis in a mainframe environment, working with JCL, CICS, and 
+                batch processing for financial data processing and job automation.
+              </p>
+            </div>
+          </article>
+          <article class="timeline-item">
+            <div class="timeline-dot" aria-hidden="true"></div>
+            <div class="timeline-content">
+              <h3 data-i18n-html="exp_3_title">Intern Developer · <span class="fraunhofer-text">Fraunhofer Portugal AICOS</span></h3>
+              <p class="meta" data-i18n="exp_3_date">February 2023 - July 2023</p>
+              <p data-i18n="exp_3_desc">
+                Developed my master's dissertation on generative AI for automating color generation 
+                in ceramic product design, in partnership with Fraunhofer Portugal. Fine-tuned 
+                existing models and proposed a new approach based on the two most widely used image 
+                generation architectures. Worked with HPC environments, Linux, Python, PyTorch, 
+                and Jupyter Notebooks. Evaluated model outputs using specific visual quality 
+                metrics and questionnaires, contributing to AI adoption in the creative 
+                manufacturing.
+              </p>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer container">
+      <p>© <span id="year"></span> Francisco Samagaio</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
