@@ -38,6 +38,7 @@ const translations = {
     projects_eyebrow: 'Projects',
     projects_title: 'Repositories',
     nav_projects: 'Projects',
+    nav_dashboard: 'Dashboard',
   },
   pt: {
     nav_profile: 'Perfil',
@@ -71,6 +72,7 @@ const translations = {
     projects_eyebrow: 'Projetos',
     projects_title: 'Repositórios',
     nav_projects: 'Projetos',
+    nav_dashboard: 'Dashboard',
   },
 };
 
