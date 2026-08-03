@@ -33,6 +33,34 @@ class WaterRepository:
     def get_by_id(self, entry_id: int) -> Optional[WaterEntry]:
         return self.db.query(WaterEntry).filter(WaterEntry.id == entry_id).first()
 
+    def get_daily_totals(self, limit_days: int = 10) -> List[dict]:
+        end_date = datetime.now(timezone.utc).date()
+        start_date = end_date - timedelta(days=limit_days - 1)
+        rows = (
+            self.db.query(
+                WaterEntry.created_at.label("created_at"),
+                WaterEntry.amount_ml.label("amount_ml"),
+            )
+            .filter(WaterEntry.created_at != None)
+            .all()
+        )
+
+        daily_totals = {}
+        for row in rows:
+            day = row.created_at.date().isoformat()
+            daily_totals[day] = daily_totals.get(day, 0) + row.amount_ml
+
+        result = []
+        current_date = start_date
+        while current_date <= end_date:
+            day_key = current_date.isoformat()
+            result.append({
+                "day": day_key,
+                "total_ml": daily_totals.get(day_key, 0),
+            })
+            current_date += timedelta(days=1)
+        return result
+
     def update(self, entry: WaterEntry, amount_ml: int) -> WaterEntry:
         entry.amount_ml = amount_ml
         self.db.commit()

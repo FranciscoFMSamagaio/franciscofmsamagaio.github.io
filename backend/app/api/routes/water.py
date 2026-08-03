@@ -25,15 +25,7 @@ def get_today_summary(db: Session = Depends(get_db_session)):
 @router.get("/history")
 def get_water_history(db: Session = Depends(get_db_session)):
     service = WaterService(db)
-    entries = service.get_history()
-    return [
-        {
-            "id": entry.id,
-            "amount_ml": entry.amount_ml,
-            "created_at": entry.created_at.isoformat() if entry.created_at else None,
-        }
-        for entry in entries
-    ]
+    return service.get_history_summary(limit_days=10)
 
 
 @router.post("", status_code=status.HTTP_201_CREATED)

@@ -56,3 +56,22 @@ def test_today_summary_ignores_old_entries_and_excludes_source(db_session):
     assert payload["today_total_ml"] == 300
     assert "source" not in payload
     assert payload["latest_entry"] is None or "source" not in payload["latest_entry"]
+
+
+def test_history_summary_groups_last_ten_days(db_session):
+    base_time = datetime.now(timezone.utc).replace(hour=0, minute=0, second=0, microsecond=0)
+    db_session.add(WaterEntry(amount_ml=200, created_at=base_time))
+    db_session.add(WaterEntry(amount_ml=300, created_at=base_time - timedelta(days=1)))
+    db_session.add(WaterEntry(amount_ml=400, created_at=base_time - timedelta(days=11)))
+    db_session.commit()
+
+    service = WaterService(db_session)
+    history = service.get_history_summary(limit_days=10)
+
+    assert len(history) == 10
+    assert history[0]["day"] == base_time.date().isoformat()
+    assert history[0]["total_ml"] == 200
+    assert history[1]["day"] == (base_time - timedelta(days=1)).date().isoformat()
+    assert history[1]["total_ml"] == 300
+    assert history[-1]["day"] == (base_time - timedelta(days=9)).date().isoformat()
+    assert history[-1]["total_ml"] == 0

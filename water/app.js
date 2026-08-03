@@ -24,6 +24,7 @@ const state = {
   goal: 2500,
   total: 0,
   history: [],
+  latestEntry: null,
 };
 
 const els = {
@@ -35,17 +36,11 @@ const els = {
   latestEntry: document.getElementById('latestEntry'),
   connectionStatus: document.getElementById('connectionStatus'),
   quickActions: document.getElementById('quickActions'),
-  modalQuickActions: document.getElementById('modalQuickActions'),
   manualAmount: document.getElementById('manualAmount'),
-  modalManualAmount: document.getElementById('modalManualAmount'),
   goalInput: document.getElementById('goalInput'),
   saveManualBtn: document.getElementById('saveManualBtn'),
-  confirmModalBtn: document.getElementById('confirmModalBtn'),
   saveGoalBtn: document.getElementById('saveGoalBtn'),
   historyList: document.getElementById('historyList'),
-  modalBackdrop: document.getElementById('modalBackdrop'),
-  openModalBtn: document.getElementById('openModalBtn'),
-  closeModalBtn: document.getElementById('closeModalBtn'),
 };
 
 function formatAmount(value) {
@@ -53,8 +48,14 @@ function formatAmount(value) {
 }
 
 function formatEntryTimestamp(entry) {
+  if (!entry?.created_at) return '';
   const date = new Date(entry.created_at);
   return `${date.toLocaleDateString()} · ${date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}`;
+}
+
+function formatDayLabel(day) {
+  const date = new Date(`${day}T00:00:00`);
+  return date.toLocaleDateString(undefined, { month: 'short', day: 'numeric' });
 }
 
 function renderQuickActions(container) {
@@ -77,9 +78,9 @@ function updateSummary() {
   els.percentageValue.textContent = `${percentage}%`;
   els.progressFill.style.width = `${percentage}%`;
 
-  const latest = state.history[0];
+  const latest = state.latestEntry;
   els.latestEntry.textContent = latest
-    ? `Last entry: ${latest.amount_ml} ml · ${formatEntryTimestamp(latest)}`
+    ? `Last entry: ${latest.amount_ml} ml`
     : 'No entries yet.';
 }
 
@@ -101,12 +102,16 @@ function renderHistory() {
 
   els.historyList.innerHTML = '';
   state.history.forEach((entry) => {
+    const totalMl = entry.total_ml ?? entry.amount_ml ?? 0;
+    const day = entry.day || entry.created_at?.slice(0, 10);
+    const label = day ? formatDayLabel(day) : 'Unknown day';
+
     const item = document.createElement('li');
     item.className = 'history-item';
     item.innerHTML = `
       <div>
-        <strong>${entry.amount_ml} ml</strong>
-        <div class="muted small">${formatEntryTimestamp(entry)}</div>
+        <strong>${totalMl} ml</strong>
+        <div class="muted small">${label}</div>
       </div>
     `;
     els.historyList.appendChild(item);
@@ -132,7 +137,8 @@ async function loadDashboard() {
 
     state.total = summary.today_total_ml || 0;
     state.goal = settings.daily_water_goal_ml || 2500;
-    state.history = history || [];
+    state.history = Array.isArray(history) ? history : [];
+    state.latestEntry = summary.latest_entry || null;
 
     updateSummary();
     renderHistory();
@@ -155,7 +161,6 @@ async function addWater(amount, source = 'manual') {
     }
 
     await loadDashboard();
-    closeModal();
   } catch (error) {
     console.error(error);
     els.latestEntry.textContent = 'Could not save the entry.';
@@ -178,29 +183,8 @@ async function updateGoal(goal) {
   }
 }
 
-function openModal() {
-  els.modalBackdrop.classList.remove('hidden');
-}
-
-function closeModal() {
-  els.modalBackdrop.classList.add('hidden');
-}
-
-els.openModalBtn?.addEventListener('click', openModal);
-els.closeModalBtn?.addEventListener('click', closeModal);
-els.modalBackdrop?.addEventListener('click', (event) => {
-  if (event.target === els.modalBackdrop) {
-    closeModal();
-  }
-});
-
 els.saveManualBtn?.addEventListener('click', () => {
   const amount = Number(els.manualAmount.value);
-  addWater(amount, 'manual');
-});
-
-els.confirmModalBtn?.addEventListener('click', () => {
-  const amount = Number(els.modalManualAmount.value);
   addWater(amount, 'manual');
 });
 
@@ -210,5 +194,4 @@ els.saveGoalBtn?.addEventListener('click', () => {
 });
 
 renderQuickActions(els.quickActions);
-renderQuickActions(els.modalQuickActions);
 loadDashboard();

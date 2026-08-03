@@ -37,6 +37,9 @@ class WaterService:
     def get_history(self) -> list[WaterEntry]:
         return self.water_repository.list_history()
 
+    def get_history_summary(self, limit_days: int = 10) -> list[dict]:
+        return self.water_repository.get_daily_totals(limit_days=limit_days)
+
     def update_entry(self, entry_id: int, amount_ml: int) -> WaterEntry:
         entry = self.water_repository.get_by_id(entry_id)
         if not entry:
