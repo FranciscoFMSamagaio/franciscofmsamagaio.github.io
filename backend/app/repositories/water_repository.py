@@ -10,8 +10,8 @@ class WaterRepository:
     def __init__(self, db: Session):
         self.db = db
 
-    def create(self, amount_ml: int, source: str) -> WaterEntry:
-        entry = WaterEntry(amount_ml=amount_ml, source=source)
+    def create(self, amount_ml: int) -> WaterEntry:
+        entry = WaterEntry(amount_ml=amount_ml)
         self.db.add(entry)
         self.db.commit()
         self.db.refresh(entry)
@@ -33,9 +33,8 @@ class WaterRepository:
     def get_by_id(self, entry_id: int) -> Optional[WaterEntry]:
         return self.db.query(WaterEntry).filter(WaterEntry.id == entry_id).first()
 
-    def update(self, entry: WaterEntry, amount_ml: int, source: str) -> WaterEntry:
+    def update(self, entry: WaterEntry, amount_ml: int) -> WaterEntry:
         entry.amount_ml = amount_ml
-        entry.source = source
         self.db.commit()
         self.db.refresh(entry)
         return entry

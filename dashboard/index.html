@@ -3,111 +3,105 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Water Module | Francisco Samagaio</title>
-    <meta name="description" content="A modular personal app module for water tracking and future life metrics." />
-    <link rel="stylesheet" href="./styles.css" />
+    <title>App Home | Francisco Samagaio</title>
+    <meta name="description" content="A modular app home for personal projects and future modules." />
+    <link rel="stylesheet" href="../styles.css" />
+    <style>
+      body {
+        background: #07111f;
+        color: #f5f7fb;
+        min-height: 100vh;
+      }
+
+      .app-home {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 4rem 1.5rem 6rem;
+      }
+
+      .hero-panel {
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        border-radius: 24px;
+        padding: 2rem;
+        margin-bottom: 2rem;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.22);
+      }
+
+      .module-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 1.25rem;
+      }
+
+      .module-card {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 20px;
+        padding: 1.35rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.8rem;
+        text-decoration: none;
+        color: inherit;
+        transition: transform 180ms ease, border-color 180ms ease;
+      }
+
+      .module-card:hover {
+        transform: translateY(-2px);
+        border-color: rgba(120, 190, 255, 0.55);
+      }
+
+      .module-card h3 {
+        margin: 0;
+        font-size: 1.1rem;
+      }
+
+      .module-card p {
+        margin: 0;
+        color: #aeb8cb;
+        line-height: 1.5;
+      }
+
+      .tag {
+        display: inline-flex;
+        align-self: flex-start;
+        padding: 0.3rem 0.7rem;
+        border-radius: 999px;
+        background: rgba(120, 190, 255, 0.14);
+        color: #86d5ff;
+        font-size: 0.8rem;
+        font-weight: 600;
+        letter-spacing: 0.03em;
+      }
+    </style>
   </head>
   <body>
-    <div class="app-shell">
-      <header class="topbar">
-        <div>
-          <p class="eyebrow">Module • Water</p>
-          <h1>Water • Focus • Growth</h1>
-        </div>
-        <div class="topbar-actions">
-          <a class="ghost-link" href="../app/">App Home</a>
-          <a class="ghost-link" href="../index.html">Portfolio</a>
-          <button class="btn btn-primary" id="openModalBtn">Add Water</button>
-        </div>
-      </header>
+    <main class="app-home">
+      <section class="hero-panel">
+        <p class="eyebrow">App Home</p>
+        <h1>Personal operating system for projects and routines.</h1>
+        <p>This section will host future modules, beginning with Water tracking.</p>
+        <p><a class="btn btn-solid" href="../index.html">Back to portfolio</a></p>
+      </section>
 
-      <main class="dashboard-grid">
-        <section class="card hero-card">
-          <div class="hero-copy">
-            <p class="eyebrow">Today</p>
-            <h2 id="todayTotal">0 ml</h2>
-            <p class="muted">Your daily hydration target is <strong id="goalValue">2500 ml</strong>.</p>
-          </div>
-          <div class="hero-stats">
-            <div>
-              <span class="stat-label">Remaining</span>
-              <strong id="remainingValue">2500 ml</strong>
-            </div>
-            <div>
-              <span class="stat-label">Progress</span>
-              <strong id="percentageValue">0%</strong>
-            </div>
-          </div>
-          <div class="progress-track" aria-label="Water progress">
-            <div class="progress-fill" id="progressFill"></div>
-          </div>
-          <div class="hero-footer">
-            <span id="latestEntry">No entries yet.</span>
-          </div>
-        </section>
-
-        <section class="card">
-          <div class="card-header">
-            <div>
-              <p class="eyebrow">Quick Add</p>
-              <h3>Fast actions</h3>
-            </div>
-          </div>
-          <div class="quick-actions" id="quickActions"></div>
-          <div class="manual-entry">
-            <label for="manualAmount">Custom amount (ml)</label>
-            <div class="manual-row">
-              <input id="manualAmount" type="number" min="50" step="50" value="250" />
-              <button class="btn btn-primary" id="saveManualBtn">Save</button>
-            </div>
-          </div>
-        </section>
-
-        <section class="card">
-          <div class="card-header">
-            <div>
-              <p class="eyebrow">Settings</p>
-              <h3>Daily goal</h3>
-            </div>
-          </div>
-          <label for="goalInput">Goal (ml)</label>
-          <div class="manual-row">
-            <input id="goalInput" type="number" min="500" step="100" value="2500" />
-            <button class="btn btn-secondary" id="saveGoalBtn">Update</button>
-          </div>
-          <p class="muted small">This first version focuses on water. The structure is already prepared for future modules.</p>
-        </section>
-
-        <section class="card history-card">
-          <div class="card-header">
-            <div>
-              <p class="eyebrow">History</p>
-              <h3>Recent entries</h3>
-            </div>
-          </div>
-          <ul class="history-list" id="historyList"></ul>
-        </section>
-      </main>
-    </div>
-
-    <div class="modal-backdrop hidden" id="modalBackdrop">
-      <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-        <div class="modal-header">
-          <h3 id="modalTitle">Add water</h3>
-          <button class="icon-btn" id="closeModalBtn" aria-label="Close modal">×</button>
-        </div>
-        <p class="muted">Choose a predefined amount or enter a custom value.</p>
-        <div class="quick-actions modal-actions" id="modalQuickActions"></div>
-        <div class="manual-entry">
-          <label for="modalManualAmount">Amount (ml)</label>
-          <div class="manual-row">
-            <input id="modalManualAmount" type="number" min="50" step="50" value="250" />
-            <button class="btn btn-primary" id="confirmModalBtn">Add</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <script src="./app.js"></script>
+      <section class="module-grid">
+        <a class="module-card" href="../water/">
+          <span class="tag">Live module</span>
+          <h3>Water Tracker</h3>
+          <p>Track today's intake, update your daily goal, and review recent entries.</p>
+        </a>
+        <a class="module-card" href="#">
+          <span class="tag">Planned</span>
+          <h3>Habits</h3>
+          <p>Build streaks and review weekly routines from a single place.</p>
+        </a>
+        <a class="module-card" href="#">
+          <span class="tag">Planned</span>
+          <h3>Projects</h3>
+          <p>Connect your active initiatives and progress notes.</p>
+        </a>
+      </section>
+    </main>
   </body>
 </html>

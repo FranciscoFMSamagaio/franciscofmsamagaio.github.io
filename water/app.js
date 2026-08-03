@@ -1,8 +1,23 @@
-const API_BASE = 'http://127.0.0.1:8000';
+const API_BASE = window.API_BASE_URL || 'http://127.0.0.1:8001';
+const API_HEADERS = window.API_HEADERS || {};
 const quickAmounts = [200, 250, 500, 750, 1000];
 
 function getApiUrl(path) {
-  return `${API_BASE}${path}`;
+  const normalizedPath = path.startsWith('/') ? path : `/${path}`;
+  return `${API_BASE}${normalizedPath}`;
+}
+
+function buildRequestOptions(method = 'GET', body = null) {
+  const headers = { ...API_HEADERS };
+  if (body !== null) {
+    headers['Content-Type'] = headers['Content-Type'] || 'application/json';
+  }
+
+  const options = { method, headers };
+  if (body !== null) {
+    options.body = typeof body === 'string' ? body : JSON.stringify(body);
+  }
+  return options;
 }
 
 const state = {
@@ -18,6 +33,7 @@ const els = {
   percentageValue: document.getElementById('percentageValue'),
   progressFill: document.getElementById('progressFill'),
   latestEntry: document.getElementById('latestEntry'),
+  connectionStatus: document.getElementById('connectionStatus'),
   quickActions: document.getElementById('quickActions'),
   modalQuickActions: document.getElementById('modalQuickActions'),
   manualAmount: document.getElementById('manualAmount'),
@@ -74,6 +90,7 @@ function setLoadingState() {
   els.percentageValue.textContent = '—';
   els.progressFill.style.width = '0%';
   els.latestEntry.textContent = 'Connecting to your dashboard…';
+  els.connectionStatus.textContent = 'Connecting to API…';
 }
 
 function renderHistory() {
@@ -91,7 +108,6 @@ function renderHistory() {
         <strong>${entry.amount_ml} ml</strong>
         <div class="muted small">${formatEntryTimestamp(entry)}</div>
       </div>
-      <span class="muted">${entry.source}</span>
     `;
     els.historyList.appendChild(item);
   });
@@ -101,9 +117,9 @@ async function loadDashboard() {
   setLoadingState();
   try {
     const [summaryRes, historyRes, settingsRes] = await Promise.all([
-      fetch(getApiUrl('/water/today')),
-      fetch(getApiUrl('/water/history')),
-      fetch(getApiUrl('/settings')),
+      fetch(getApiUrl('/water/today'), buildRequestOptions()),
+      fetch(getApiUrl('/water/history'), buildRequestOptions()),
+      fetch(getApiUrl('/settings'), buildRequestOptions()),
     ]);
 
     if (!summaryRes.ok || !historyRes.ok || !settingsRes.ok) {
@@ -120,20 +136,19 @@ async function loadDashboard() {
 
     updateSummary();
     renderHistory();
+    els.connectionStatus.textContent = 'Connected to API';
   } catch (error) {
     console.error(error);
     els.latestEntry.textContent = 'Dashboard is offline. Start the API to sync data.';
+    els.connectionStatus.textContent = 'Offline';
+    els.historyList.innerHTML = '<li class="history-item"><span class="muted">Unable to reach the API right now.</span></li>';
   }
 }
 
 async function addWater(amount, source = 'manual') {
   if (!Number.isFinite(amount) || amount <= 0) return;
   try {
-    const res = await fetch(getApiUrl('/water'), {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ amount_ml: amount, source }),
-    });
+    const res = await fetch(getApiUrl('/water'), buildRequestOptions('POST', { amount_ml: amount }));
 
     if (!res.ok) {
       throw new Error('Unable to save water entry');
@@ -144,16 +159,13 @@ async function addWater(amount, source = 'manual') {
   } catch (error) {
     console.error(error);
     els.latestEntry.textContent = 'Could not save the entry.';
+    els.connectionStatus.textContent = 'Failed to save';
   }
 }
 
 async function updateGoal(goal) {
   try {
-    const res = await fetch(getApiUrl('/settings'), {
-      method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ daily_water_goal_ml: goal }),
-    });
+    const res = await fetch(getApiUrl('/settings'), buildRequestOptions('PUT', { daily_water_goal_ml: goal }));
 
     if (!res.ok) {
       throw new Error('Unable to update goal');

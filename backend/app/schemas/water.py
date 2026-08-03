@@ -6,7 +6,6 @@ from pydantic import BaseModel, Field
 
 class WaterEntryBase(BaseModel):
     amount_ml: int = Field(..., ge=1)
-    source: str = Field(default="manual")
 
 
 class WaterEntryCreate(WaterEntryBase):
@@ -15,7 +14,6 @@ class WaterEntryCreate(WaterEntryBase):
 
 class WaterEntryUpdate(BaseModel):
     amount_ml: Optional[int] = Field(default=None, ge=1)
-    source: Optional[str] = None
 
 
 class WaterEntryResponse(WaterEntryBase):
