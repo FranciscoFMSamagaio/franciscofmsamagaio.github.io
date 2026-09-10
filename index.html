@@ -17,58 +17,56 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
+    <a class="skip-link" href="#main">Skip to content</a>
     <div class="noise" aria-hidden="true"></div>
     <header class="site-header" id="top">
       <div class="container nav-wrap">
-        <a class="brand" href="#top">Francisco Samagaio</a>
-        <button class="menu-toggle" aria-expanded="false" aria-label="Toggle menu">
+        <a class="brand" href="#top" aria-label="Francisco Samagaio — home">fs<span>.</span></a>
+        <button class="menu-toggle" aria-expanded="false" aria-label="Toggle menu" aria-controls="main-nav">
           <span></span><span></span>
         </button>
-        <nav class="nav" aria-label="Main navigation">
-          <a href="#profile" data-i18n="nav_profile">Profile</a>
-          <a href="#experience" data-i18n="nav_experience">Experience</a>
-          <a href="#projects" data-i18n="nav_projects">Projects</a>
-          <a href="#contact" data-i18n="nav_contact">Contact</a>
+        <nav id="main-nav" class="nav" aria-label="Main navigation">
+          <a href="#profile">about me</a>
+          <a href="#experience">experience</a>
+          <a href="#projects">projects</a>
+          <a href="#contact">contact</a>
         </nav>
         <div class="header-actions">
-          <div class="language-switcher" aria-label="Language switcher">
-            <button type="button" class="lang-btn" href="./Francisco_Samagaio.pdf" download data-i18n="btn_download">Download CV</button>
-            <button type="button" class="lang-btn active" data-lang="en" aria-pressed="true">EN</button>
-            <button type="button" class="lang-btn" data-lang="pt" aria-pressed="false">PT</button>
-          </div>
+          <a class="header-cv" href="./Francisco_Samagaio.pdf" download>CV</a>
         </div>
       </div>
     </header>
 
-    <main>
+    <main id="main">
       <section class="hero container reveal">
         <div class="hero-main">
-          <p class="kicker" data-i18n="hero_kicker">Data Analyst • Data Scientist • Data Engineering</p>
-          <h1>Francisco Samagaio</h1>
-          <p class="hero-copy" data-i18n-html="hero_copy">
+          <p class="kicker">Data Analyst • Data Scientist • Data Engineering</p>
+          <h1>Francisco<span>Samagaio.</span></h1>
+          <p class="hero-copy">
             Data Analyst at <span class="natixis-text">Natixis in Portugal</span>
           </p>
+          <p class="hero-summary">Turning complex data into clear insights, reliable pipelines, and useful software.</p>
           <div class="hero-actions">
-            <a class="btn btn-solid" href="#projects" data-i18n="btn_explore">Explore Work</a>
-            <a class="btn btn-ghost" href="./Francisco_Samagaio.pdf" download data-i18n="btn_download">CV</a>
+            <a class="btn btn-solid" href="#projects">Explore Work</a>
+            <a class="btn btn-ghost" href="./Francisco_Samagaio.pdf" download>CV</a>
           </div>
         </div>
         <figure class="hero-photo-wrap">
           <img
             class="hero-photo"
             src="./FS_photo.png"
-            alt="Portrait of Francisco Samagaio"
+            alt="Portrait of Francisco Samagaio" fetchpriority="high" width="330" height="413"
           />
         </figure>
       </section>
 
       <section class="section container reveal" id="profile">
         <div class="section-head">
-          <p class="eyebrow" data-i18n="profile_title">About Me</p>
+          <h2 class="eyebrow">about me</h2>
         </div>
         <div class="profile-grid">
           <article class="glass-card profile-main">
-            <p data-i18n="about_p1">
+            <p>
               Data Analyst with expertise in SQL, Python, and data engineering. I
               hold a Master's degree in Electrical and Computer Engineering from the
               University of Porto and have experience designing ETL processes,
@@ -76,7 +74,7 @@
               environments. I'm passionate about turning complex data into clear,
               meaningful insights that help solve real problems.
             </p>
-            <p data-i18n="about_p2">
+            <p>
               Beyond data, I love exploring how technology can make everyday life
               simpler and more meaningful - whether through automation, creative side
               projects, or AI experiments. Outside of work, you'll usually find me
@@ -85,18 +83,18 @@
             </p>
           </article>
           <aside class="glass-card profile-side">
-            <h3 data-i18n="core_stack">Core Stack</h3>
+            <h3>Core Stack</h3>
             <ul>
               <li>SQL</li>
               <li>Python (Pandas, NumPy, PyTorch, Scikit-learn)</li>
               <li>Git, Jenkins, Bash, Jira</li>
               <li>C, C++, PHP, HTML, COBOL, JCL, Mainframe</li>
             </ul>
-            <h3 data-i18n="languages_title">Languages</h3>
+            <h3>Languages</h3>
             <ul>
-              <li data-i18n="lang_pt">Portuguese (Native)</li>
-              <li data-i18n="lang_en">English (Fluent)</li>
-              <li data-i18n="lang_es">Spanish (Intermediate)</li>
+              <li>Portuguese (Native)</li>
+              <li>English (Fluent)</li>
+              <li>Spanish (Intermediate)</li>
             </ul>
           </aside>
         </div>
@@ -104,23 +102,23 @@
 
       <section class="section container reveal" id="experience">
         <div class="section-head">
-          <p class="eyebrow" data-i18n="experience_title">Experience</p>
+          <h2 class="eyebrow">experience</h2>
         </div>
         <div class="timeline">
           <article class="timeline-item">
             <div class="timeline-dot" aria-hidden="true"></div>
             <div class="timeline-content">
-              <h3 data-i18n-html="exp_1_title">Junior Data Analyst · <span class="natixis-text">Natixis in Portugal</span></h3>
-              <p class="meta" data-i18n="exp_1_date">December 2024 - Present</p>
-              <p data-i18n="exp_1_desc">
-                Responsible for data extraction, transformation, and reporting within the Financing Data team, 
-                working on a data lake that mirrors the Oracle-based financing system. Develop custom reports 
-                using EasyMorph for data manipulation, addressing requests from shareholders and business 
-                stakeholders. Maintain and optimize SQL queries used across ~300 reports, ensuring high 
-                performance, data accuracy, and alignment with business needs. Oversee the design, development, 
-                maintenance, and validation of 30+ database tables, ensuring data integrity throughout the 
-                pipeline. Contribute to a migration project, transitioning ~80 reports from IBM Cognos to 
-                EasyMorph and the data lake environment, rewriting complex SQL logic for compatibility and 
+              <h3>Junior Data Analyst · <span class="natixis-text">Natixis in Portugal</span></h3>
+              <p class="meta">December 2024 - Present</p>
+              <p class="experience-description">
+                Responsible for data extraction, transformation, and reporting within the Financing Data team,
+                working on a data lake that mirrors the Oracle-based financing system. Develop custom reports
+                using EasyMorph for data manipulation, addressing requests from shareholders and business
+                stakeholders. Maintain and optimize SQL queries used across ~300 reports, ensuring high
+                performance, data accuracy, and alignment with business needs. Oversee the design, development,
+                maintenance, and validation of 30+ database tables, ensuring data integrity throughout the
+                pipeline. Contribute to a migration project, transitioning ~80 reports from IBM Cognos to
+                EasyMorph and the data lake environment, rewriting complex SQL logic for compatibility and
                 improved efficiency. Built strong expertise in data engineering, ETL design, and cross-functional
                  collaboration within a regulated financial environment.
               </p>
@@ -129,18 +127,18 @@
           <article class="timeline-item">
             <div class="timeline-dot" aria-hidden="true"></div>
             <div class="timeline-content">
-              <h3 data-i18n-html="exp_2_title">Intern Developer · <span class="natixis-text">Natixis in Portugal</span></h3>
-              <p class="meta" data-i18n="exp_2_date">December 2023 - December 2024</p>
-              <p data-i18n="exp_2_desc">
-                Developed a project to transition an application from PowerShell to Python, 
-                contributing to architecture redesign, technology selection, and feature 
-                implementation. Created Python scripts using Pandas and NumPy to automate data 
-                extraction and transformation from around 150 files in various formats 
-                (CSV, Excel, TXT, JSON), with each script handling multiple input files. 
-                This automation enabled seamless integration with reporting pipelines. Used Git 
-                and Jenkins for version control and to support continuous integration and 
-                deployment throughout the development lifecycle. Contributed to COBOL program 
-                development and analysis in a mainframe environment, working with JCL, CICS, and 
+              <h3>Intern Developer · <span class="natixis-text">Natixis in Portugal</span></h3>
+              <p class="meta">December 2023 - December 2024</p>
+              <p class="experience-description">
+                Developed a project to transition an application from PowerShell to Python,
+                contributing to architecture redesign, technology selection, and feature
+                implementation. Created Python scripts using Pandas and NumPy to automate data
+                extraction and transformation from around 150 files in various formats
+                (CSV, Excel, TXT, JSON), with each script handling multiple input files.
+                This automation enabled seamless integration with reporting pipelines. Used Git
+                and Jenkins for version control and to support continuous integration and
+                deployment throughout the development lifecycle. Contributed to COBOL program
+                development and analysis in a mainframe environment, working with JCL, CICS, and
                 batch processing for financial data processing and job automation.
               </p>
             </div>
@@ -148,15 +146,15 @@
           <article class="timeline-item">
             <div class="timeline-dot" aria-hidden="true"></div>
             <div class="timeline-content">
-              <h3 data-i18n-html="exp_3_title">Intern Developer · <span class="fraunhofer-text">Fraunhofer Portugal AICOS</span></h3>
-              <p class="meta" data-i18n="exp_3_date">February 2023 - July 2023</p>
-              <p data-i18n="exp_3_desc">
-                Developed my master's dissertation on generative AI for automating color generation 
-                in ceramic product design, in partnership with Fraunhofer Portugal. Fine-tuned 
-                existing models and proposed a new approach based on the two most widely used image 
-                generation architectures. Worked with HPC environments, Linux, Python, PyTorch, 
-                and Jupyter Notebooks. Evaluated model outputs using specific visual quality 
-                metrics and questionnaires, contributing to AI adoption in the creative 
+              <h3>Intern Developer · <span class="fraunhofer-text">Fraunhofer Portugal AICOS</span></h3>
+              <p class="meta">February 2023 - July 2023</p>
+              <p class="experience-description">
+                Developed my master's dissertation on generative AI for automating color generation
+                in ceramic product design, in partnership with Fraunhofer Portugal. Fine-tuned
+                existing models and proposed a new approach based on the two most widely used image
+                generation architectures. Worked with HPC environments, Linux, Python, PyTorch,
+                and Jupyter Notebooks. Evaluated model outputs using specific visual quality
+                metrics and questionnaires, contributing to AI adoption in the creative
                 manufacturing.
               </p>
             </div>
@@ -166,14 +164,14 @@
 
       <section class="section container reveal" id="projects">
         <div class="section-head">
-          <p class="eyebrow" data-i18n="projects_title">Projects</p>
+          <h2 class="eyebrow">projects</h2>
         </div>
-        <div id="repos" class="projects-grid"></div>
+        <div id="repos" class="projects-grid" aria-live="polite"><p class="repos-status"><a href="https://github.com/FranciscoFMSamagaio?tab=repositories">View repositories on GitHub ↗</a></p></div>
       </section>
 
       <section class="section container reveal" id="contact">
         <div class="section-head">
-          <p class="eyebrow" data-i18n="contact_eyebrow">Contact</p>
+          <h2 class="eyebrow">contact</h2>
         </div>
         <article class="contact-card">
           <div class="contact-links">
