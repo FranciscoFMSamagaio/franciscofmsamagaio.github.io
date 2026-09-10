@@ -7,16 +7,6 @@ if (year) {
   year.textContent = new Date().getFullYear();
 }
 
-document.querySelectorAll('.experience-description').forEach(paragraph => {
-  const list = document.createElement('ul');
-  paragraph.textContent.trim().replace(/\s+/g, ' ').split(/(?<=\.)\s+(?=[A-Z])/).forEach(sentence => {
-    const item = document.createElement('li');
-    item.textContent = sentence;
-    list.appendChild(item);
-  });
-  paragraph.replaceWith(list);
-});
-
 const timeline = document.querySelector('.timeline');
 if (timeline) {
   const layout = document.createElement('div');
