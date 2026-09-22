@@ -16,7 +16,7 @@ if (timeline) {
   tabs.className = 'experience-tabs';
   tabs.setAttribute('role', 'tablist');
   tabs.setAttribute('aria-label', 'Roles and companies');
-  const labels = [['Natixis', 'Data Analyst'], ['Natixis', 'Developer'], ['Fraunhofer', 'AI Research']];
+  const labels = [['Natixis', 'Data Engineer'], ['Natixis', 'Developer'], ['Fraunhofer', 'AI Research']];
   const panels = [...timeline.querySelectorAll('.timeline-item')];
   const activate = (index) => {
     [...tabs.children].forEach((tab, i) => {
@@ -99,6 +99,8 @@ if (menuToggle && nav) {
 
 // Render remote content as text, with a direct GitHub link when the API is unavailable.
 const defaultGitHubUser = 'FranciscoFMSamagaio';
+// Curated, in order of relevance to Data Engineering — keeps the grid focused instead of dumping every repo.
+const featuredRepos = ['8-Week-SQL-Challenge', 'vinted_price_tracker', 'Mickey_Detector', 'Folder-Cleaner'];
 function repoStatus(key) {
   const container = document.getElementById('repos');
   const message = document.createElement('p');
@@ -127,9 +129,12 @@ async function fetchAndRenderRepos(username) {
     if (!response.ok) throw new Error('GitHub API unavailable');
     const repos = await response.json();
     if (!Array.isArray(repos)) throw new Error('Invalid repository response');
-    if (!repos.length) { repoStatus('empty'); return; }
+    const featured = featuredRepos
+      .map(name => repos.find(repo => repo.name.toLowerCase() === name.toLowerCase()))
+      .filter(Boolean);
+    if (!featured.length) { repoStatus('empty'); return; }
     const fragment = document.createDocumentFragment();
-    repos.forEach(repo => {
+    featured.forEach(repo => {
       const card = document.createElement('article');
       card.className = 'repo-card';
       const top = document.createElement('div');

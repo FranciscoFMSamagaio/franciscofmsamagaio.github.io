@@ -6,8 +6,24 @@
     <title>Francisco Samagaio | Portfolio</title>
     <meta
       name="description"
-      content="Portfolio of Francisco Samagaio - Data Analyst and Developer focused on data engineering, automation, and software delivery."
+      content="Portfolio of Francisco Samagaio - Junior Data Engineer focused on ETL pipelines, data warehousing, and automation."
     />
+    <link rel="canonical" href="https://franciscofmsamagaio.github.io/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://franciscofmsamagaio.github.io/" />
+    <meta property="og:title" content="Francisco Samagaio | Portfolio" />
+    <meta
+      property="og:description"
+      content="Portfolio of Francisco Samagaio - Junior Data Engineer focused on ETL pipelines, data warehousing, and automation."
+    />
+    <meta property="og:image" content="https://franciscofmsamagaio.github.io/FS_photo.jpeg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Francisco Samagaio | Portfolio" />
+    <meta
+      name="twitter:description"
+      content="Portfolio of Francisco Samagaio - Junior Data Engineer focused on ETL pipelines, data warehousing, and automation."
+    />
+    <meta name="twitter:image" content="https://franciscofmsamagaio.github.io/FS_photo.jpeg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -28,6 +44,7 @@
         <nav id="main-nav" class="nav" aria-label="Main navigation">
           <a href="#profile">about me</a>
           <a href="#experience">experience</a>
+          <a href="#education">education</a>
           <a href="#projects">projects</a>
           <a href="#contact">contact</a>
           <a href="./Francisco_Samagaio.pdf" download>cv</a>
@@ -38,10 +55,10 @@
     <main id="main">
       <section class="hero container reveal">
         <div class="hero-main">
-          <p class="kicker">Data Engineering • Data Analyst • Data Scientist</p>
+          <p class="kicker">Python • SQL • ETL Pipelines • Data Warehousing</p>
           <h1>Francisco<span>Samagaio.</span></h1>
           <p class="hero-copy">
-            Data Analyst at <span class="natixis-text">Natixis in Portugal</span>
+            Junior Data Engineer at <span class="natixis-text">Natixis in Portugal</span>
           </p>
         </div>
         <figure class="hero-photo-wrap">
@@ -60,31 +77,72 @@
         <div class="profile-grid">
           <article class="glass-card profile-main">
             <p>
-              I’m a Data Analyst at Natixis with a background in Electrical and Computer Engineering and hands-on experience in SQL transformations, data quality and Python automation within banking.
+              I’m a Junior Data Engineer at Natixis with a background in Electrical and Computer Engineering and hands-on experience designing ETL pipelines, SQL (Apache Hive) and data quality within banking.
             </p>
             <p>
-              In the CIB Financing Data Team, I develop and optimize SQL queries supporting approximately 300 financial reports and maintain and validate more than 30 data tables. My work includes integrating API-sourced JSON data and translating business and regulatory requirements into reliable reporting workflows.
+              In the CIB Financing Data Team, I design and maintain ETL pipelines in EasyMorph and SQL (Apache Hive), transforming multi-source data into the reporting-ready datasets behind approximately 300 financial reports. I maintain and validate more than 30 Hive tables used as the reference source for financing data across the company, and implement data quality controls such as row-count comparisons, totals reconciliation and outlier detection.
             </p>
             <p>
-              I migrated approximately 80 reports from IBM Cognos to EasyMorph, rewriting SQL queries and validating consistency between outputs. Previously, I developed Python workflows to process approximately 150 CSV, Excel, TXT and JSON files, replacing existing PowerShell processes and using Git, Jenkins and Linux.
+              I migrated approximately 80 reports from IBM Cognos to EasyMorph, rewriting and optimizing SQL logic and validating outputs against the legacy source. Previously, I built an automated Python ETL pipeline with Pandas and NumPy that replaced legacy PowerShell workflows and cut processing time by roughly 90%, ingesting and standardizing more than 150 CSV, Excel, TXT and JSON files.
             </p>
             <p>
-              I’m focused on progressing into Data Engineering, building on this experience to develop reliable pipelines and well-structured datasets. I’m currently building a personal project with PySpark to deepen my understanding of distributed data processing.
+              I’m focused on progressing further into Data Engineering, building foundational knowledge in PySpark and Medallion Architecture, and currently learning Databricks, Apache Airflow, dbt and Docker.
             </p>
-            <p class="profile-technologies"><strong>Core technologies:</strong> SQL, Python, Pandas, EasyMorph, Git and Linux.</p>
+            <div class="skills-grid">
+              <div class="skills-group">
+                <h4>Programming</h4>
+                <ul class="skills-tags">
+                  <li>Python</li>
+                  <li>SQL</li>
+                  <li>Bash</li>
+                </ul>
+              </div>
+              <div class="skills-group">
+                <h4>Data Engineering</h4>
+                <ul class="skills-tags">
+                  <li>ETL Pipelines</li>
+                  <li>Data Warehousing</li>
+                  <li>Batch Processing</li>
+                </ul>
+              </div>
+              <div class="skills-group">
+                <h4>Data Processing</h4>
+                <ul class="skills-tags">
+                  <li>Pandas</li>
+                  <li>NumPy</li>
+                  <li>Data Cleaning</li>
+                </ul>
+              </div>
+              <div class="skills-group">
+                <h4>Tools &amp; Databases</h4>
+                <ul class="skills-tags">
+                  <li>Git</li>
+                  <li>Linux</li>
+                  <li>Apache Hive</li>
+                  <li>EasyMorph</li>
+                </ul>
+              </div>
+            </div>
           </article>
           <aside class="glass-card profile-side">
             <h3>Current Focus</h3>
             <ul>
-              <li>Data Engineering</li>
               <li>PySpark</li>
-              <li>Distributed data processing</li>
+              <li>Medallion Architecture</li>
+            </ul>
+            <h3>Currently Learning</h3>
+            <ul>
+              <li>Databricks</li>
+              <li>Apache Airflow</li>
+              <li>dbt</li>
+              <li>Docker</li>
             </ul>
             <h3>Languages</h3>
             <ul>
               <li>Portuguese (Native)</li>
               <li>English (Fluent)</li>
               <li>Spanish (Intermediate)</li>
+              <li>French (Beginner)</li>
             </ul>
           </aside>
         </div>
@@ -98,18 +156,18 @@
           <article class="timeline-item">
             <div class="timeline-dot" aria-hidden="true"></div>
             <div class="timeline-content">
-              <h3>Junior Data Analyst · <span class="natixis-text">Natixis in Portugal</span></h3>
+              <h3>Junior Developer (Data Engineer) · <span class="natixis-text">Natixis in Portugal</span></h3>
               <p class="meta">December 2024 - Present</p>
-              <p class="role-intro">Working within the CIB Financing Data Team, developing and maintaining data transformation and financial reporting workflows.</p>
+              <p class="role-intro">Designing and maintaining ETL pipelines for Corporate &amp; Investment Banking teams within the CIB Financing Data Team.</p>
               <ul class="role-details">
-                <li>Develop SQL queries to extract, transform and aggregate data supporting approximately 300 financial reports, optimizing joins, filters and subqueries.</li>
-                <li>Migrated approximately 80 reports from IBM Cognos to EasyMorph, rewriting SQL queries and validating consistency between source and migrated outputs.</li>
-                <li>Maintain and validate 30+ data tables supporting ETL and reporting workflows, checking data consistency across multiple sources.</li>
+                <li>Design and maintain ETL pipelines in EasyMorph and SQL (Apache Hive), transforming multi-source data into the reporting-ready datasets behind approximately 300 financial reports.</li>
+                <li>Migrated approximately 80 reports from IBM Cognos to EasyMorph, rewriting and optimizing SQL logic and validating outputs against the legacy source.</li>
+                <li>Maintain and validate 30+ Hive tables used as the reference source for financing data by teams across the company.</li>
+                <li>Implement data quality controls, including row-count comparisons, totals reconciliation and outlier detection, to catch anomalies before they reach reports.</li>
                 <li>Integrate API-sourced JSON data with internal datasets using SQL and EasyMorph for downstream reporting.</li>
-                <li>Collaborate with cross-functional teams to translate business and regulatory requirements into data transformations and reporting solutions.</li>
               </ul>
-              <p class="role-stack"><strong>Technologies:</strong> SQL • EasyMorph • APIs • JSON</p>
-              <p class="role-stack"><strong>Focus areas:</strong> ETL • Data Transformation • Data Quality • Query Optimization</p>
+              <p class="role-stack"><strong>Technologies:</strong> SQL • Apache Hive • EasyMorph • APIs • JSON</p>
+              <p class="role-stack"><strong>Focus areas:</strong> ETL • Data Warehousing • Data Quality • Query Optimization</p>
             </div>
           </article>
           <article class="timeline-item">
@@ -118,27 +176,50 @@
               <h3>Intern Developer · <span class="natixis-text">Natixis in Portugal</span></h3>
               <p class="meta">December 2023 - December 2024</p>
               <ul class="role-details">
-                <li>Developed reusable Python workflows using Pandas and NumPy to automate data processing, replacing existing PowerShell processes.</li>
-                <li>Automated the extraction and transformation of approximately 150 files across CSV, Excel, TXT and JSON formats.</li>
-                <li>Used Git for version control and Jenkins for automated execution and deployment of data processing workflows.</li>
-                <li>Developed and tested solutions in Linux environments.</li>
+                <li>Built an automated Python ETL pipeline using Pandas and NumPy, replacing legacy PowerShell workflows and cutting processing time to one tenth (~90% reduction).</li>
+                <li>Ingested and standardized 150+ files across CSV, Excel, TXT and JSON formats: cleaning, validation and business rules, loading into Oracle and generating Excel reports automatically.</li>
+                <li>Ensured data quality with pytest tests, row-count reconciliation and logging of pipeline metrics.</li>
+                <li>Used Git and Jenkins to schedule, run and deploy the pipelines, developing and testing solutions in Linux environments.</li>
               </ul>
-              <p class="role-stack"><strong>Technologies:</strong> Python • Pandas • NumPy • Git • Jenkins • Linux</p>
+              <p class="role-stack"><strong>Technologies:</strong> Python • Pandas • NumPy • Oracle • pytest • Git • Jenkins • Linux</p>
             </div>
           </article>
           <article class="timeline-item">
             <div class="timeline-dot" aria-hidden="true"></div>
             <div class="timeline-content">
-              <h3>Intern Developer · <span class="fraunhofer-text">Fraunhofer Portugal AICOS</span></h3>
+              <h3>Research Intern · <span class="fraunhofer-text">Fraunhofer Portugal AICOS</span></h3>
               <p class="meta">February 2023 - July 2023</p>
-              <p class="role-intro">Conducted master’s dissertation research in partnership with Fraunhofer Portugal AICOS, exploring generative AI for ceramic product design through the generation of plate images.</p>
+              <p class="role-intro">Conducted master’s dissertation research in partnership with Fraunhofer Portugal AICOS, exploring generative AI for ceramic design and color generation.</p>
               <ul class="role-details">
-                <li>Built data preparation and evaluation workflows in Python to support model training and experimentation.</li>
-                <li>Fine-tuned diffusion models and Generative Adversarial Networks (GANs), and proposed a new approach based on these architectures.</li>
+                <li>Designed, trained and fine-tuned generative AI models (diffusion models and GANs) in PyTorch, proposing a novel hybrid architecture combining both approaches.</li>
+                <li>Built Python data pipelines to prepare training data and evaluate model outputs, using image quality and color metrics alongside a user study to validate results.</li>
                 <li>Trained and evaluated models in Linux-based high-performance computing (HPC) environments using PyTorch and Jupyter Notebooks.</li>
                 <li>Assessed generated images for visual quality, creativity, spatial composition and color accuracy using quantitative metrics and questionnaires.</li>
               </ul>
               <p class="role-stack"><strong>Technologies:</strong> Python • PyTorch • Linux • HPC • Jupyter Notebooks</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section container reveal" id="education">
+        <div class="section-head">
+          <h2 class="eyebrow">education</h2>
+        </div>
+        <div class="timeline">
+          <article class="timeline-item">
+            <div class="timeline-dot" aria-hidden="true"></div>
+            <div class="timeline-content">
+              <h3>Master’s Degree in Electrical and Computer Engineering</h3>
+              <p class="meta">University of Porto — Faculty of Engineering · 2018 - 2023</p>
+              <p class="role-intro">Thesis: Generative AI for Ceramic Color Generation.</p>
+            </div>
+          </article>
+          <article class="timeline-item">
+            <div class="timeline-dot" aria-hidden="true"></div>
+            <div class="timeline-content">
+              <h3>Erasmus+ Exchange Program</h3>
+              <p class="meta">University of Genoa · 2022</p>
             </div>
           </article>
         </div>
